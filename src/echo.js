@@ -35,7 +35,7 @@ window.Echo = (function (global, document, undefined) {
       for (var i = 0; i < length; i++) {
         var self = store[i];
         if (self && _inView(self)) {
-          self.src = self.getAttribute('data-echo');
+          self.style.background = 'url(' + self.getAttribute('data-src') + ')';
           store.splice(i, 1);
           length = store.length;
           i--;
@@ -68,7 +68,7 @@ window.Echo = (function (global, document, undefined) {
    */
   var init = function (obj) {
 
-    var nodes = document.querySelectorAll('[data-echo]');
+    var nodes = document.querySelectorAll('[data-src]');
     var opts = obj || {};
     offset = parseInt(opts.offset || 0);
     throttle = parseInt(opts.throttle || 250);
